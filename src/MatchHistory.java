@@ -61,5 +61,35 @@ public class MatchHistory {
 		}
 		return counter;
 	}
+	public ArrayList<Match> getMatchesFromTeam(Team t)
+	{
+		ArrayList<Match >list=new ArrayList<Match>();
+		for(Match m: history)
+		{
+			if(m.getHome()==t||m.getAway()==t)
+				list.add(m);
+		}
+		return list;
+	}
+	public ArrayList<Match> getMatchesFromHomeTeam(Team t)
+	{
+		ArrayList<Match >list=new ArrayList<Match>();
+		for(Match m: history)
+		{
+			if(m.getHome()==t)
+				list.add(m);
+		}
+		return list;
+	}
+	public ArrayList<Match> getMatchesFromAwayTeam(Team t)
+	{
+		ArrayList<Match >list=new ArrayList<Match>();
+		for(Match m: history)
+		{
+			if(m.getAway()==t)
+				list.add(m);
+		}
+		return list;
+	}
 
 }

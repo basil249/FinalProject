@@ -21,6 +21,22 @@ public class Match {
 		isTie=false;
 		isOverTime=false;
 	}
+	public Team  getHome()
+	{
+		return home;
+	}
+	public Team getAway()
+	{
+		return away;
+	}
+	public void setHome(Team t)
+	{
+		this.home=t;
+	}
+	public void setAway(Team t)
+	{
+		this.away=t;
+	}
 	//returns the winning team. Or null if it is a tie
 	public void playMatch()
 	{
