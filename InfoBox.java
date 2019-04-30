@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package worldcup;
+//package worldcup;
 
 import java.io.BufferedReader;
 import javafx.scene.layout.*;
@@ -13,19 +13,19 @@ import javafx.stage.*;
 import javafx.scene.*;
 import javafx.stage.Window;
 import java.io.FileReader;
+import java.util.Arrays;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 
 /**
  *
  * @author Me
  */
 public class InfoBox {
-    TableView<Team> table;//or league maybe? will we even use this
 
-    
-    
+
     public static void display(String title, String message){
         Stage window = new Stage();
         
@@ -49,17 +49,35 @@ public class InfoBox {
     
     }
     //no idea if we'll even use this tho???? 
-    public void matchInfo(){
-
-        table = new TableView<>();
-        //team name column
-        TableColumn<Team,String> nameColumn = new TableColumn<>("Name");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        //team score column
-        TableColumn<Team,int> scoreColumn = new TableColumn<>("Score");
-        scoreColumn.setCellValueFactory( new PropertyValueFactory<>("score"));
-        //team rank column
-        TableColumn<Team,int> rankColumn = new TableColumn<>("Rank");
-        rankColumn.setCellValueFactory(new PropertyValueFactory<>("rank");
-
+    public void matchInfo(League l){
+        String[][] info = new String[3][4];
+      //info[0][0] = l-> get match --> find a method to do this
+      //info[0][1] = l-> get team 1
+      //info[0][2] = l-> get team 2
+      info[1][0] = "win";
+      //info[1][1] = l-> team 1 won or not
+      //info[1][2] = l-> team 2 won or not
+      info[2][0] = "score";
+      //info[2][1] = l-> team 1 score
+      //info[2][2] = l-> team 2 score
+      info[3][0] = "penalties";
+      //info[3][1] = l-> team 1 penalities
+      //info[3][2] = l-> team 2 penalities 
+      String infoStr = Arrays.deepToString(info);
+      display("Match Information",infoStr);
     }
+    public void instructions(){
+        FileInitializer fz = new FileInitializer();
+        display("Instructions",fz.getInstructions());
+    }
+
+
+
+
+
+
+    
+
+        
+    
+}
