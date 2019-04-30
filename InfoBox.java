@@ -13,13 +13,16 @@ import javafx.stage.*;
 import javafx.scene.*;
 import javafx.stage.Window;
 import java.io.FileReader;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
  * @author Me
  */
 public class InfoBox {
-    
+    TableView<Team> table;//or league maybe? will we even use this
 
     
     
@@ -45,10 +48,18 @@ public class InfoBox {
         window.showAndWait();
     
     }
-    
+    //no idea if we'll even use this tho???? 
+    public void matchInfo(){
 
-        
-    
-}
-    
+        table = new TableView<>();
+        //team name column
+        TableColumn<Team,String> nameColumn = new TableColumn<>("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        //team score column
+        TableColumn<Team,int> scoreColumn = new TableColumn<>("Score");
+        scoreColumn.setCellValueFactory( new PropertyValueFactory<>("score"));
+        //team rank column
+        TableColumn<Team,int> rankColumn = new TableColumn<>("Rank");
+        rankColumn.setCellValueFactory(new PropertyValueFactory<>("rank");
 
+    }
