@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -10,7 +10,7 @@ import java.util.Comparator;
  * This is in a very basic state, posting this now to get some feedback from others.
  */
 
-public class League {
+public class League implements Playable {
 
 	private ArrayList<Team> teams = new ArrayList<Team>();
 	
@@ -59,6 +59,7 @@ public class League {
 		int pointsForTeam1 = 0;
 		int pointsForTeam2 = 0;
 		
+		//NEW CHANGES TO THE MATCH SYSTEM****************************************************
 		int duration = 5;
 		int start = 0;
 		
@@ -107,6 +108,7 @@ public class League {
 	 */
 	
 	public void getTournamentScore() {
+		getSortedTeams();
 		for(Team t: teams) {
 			System.out.println(t.getName() + " tournamnet points: " + t.getPoints() + " total goals scored: " + t.getScore());
 		}
@@ -140,13 +142,15 @@ public class League {
 	 * 
 	 */
 	
+	//improved tie breaker to handle an x-way ties
 	public void tieBreaker(ArrayList<Team> teams) {
 		
-		for(int i = 0; i < teams.size() - 1; i++) {
-			if(teams.get(i).getPoints() == teams.get(i + 1).getPoints()) {
-				
-				if(teams.get(i + 1).getScore() > teams.get(i).getScore()) {
-					Collections.swap(teams, i, i + 1);
+		for(int i = 0; i < teams.size(); i++) {
+			for(int k = teams.size() - 1; k > i; k--) {
+				if(teams.get(i).getPoints() == teams.get(k).getPoints()) {
+					if( teams.get(i).getScore() < teams.get(k).getScore()) {
+						Collections.swap(teams, i, k);
+					}
 				}
 			}
 		}
@@ -162,18 +166,29 @@ public class League {
 		
 		//Constructs teams with only having the knowledge of their name and rank
 		Team celtics = new Team("Celtics",1);
+		celtics.setPoints(100);
+		celtics.setScore(500);
 		teams.add(celtics);
 		
+		
 		Team gsw = new Team("GSW", 8);
+		gsw.setPoints(100);
+		gsw.setScore(400);
 		teams.add(gsw);
 		
 		Team okc = new Team("OKC", 7);
+		okc.setPoints(100);
+		okc.setScore(300);
 		teams.add(okc);
 		
 		Team rockets = new Team("Rockets", 5);
+		rockets.setPoints(100);
+		rockets.setScore(200);
 		teams.add(rockets);
 		
 		Team knicks = new Team("Knicks", 3);
+		knicks.setPoints(100);
+		knicks.setScore(500);
 		teams.add(knicks);
 		
 		
@@ -181,9 +196,9 @@ public class League {
 		
 		
 		League league = new League(teams);
-		league.simulateQualifiers();
+		
 		System.out.println("-------SORTED--------");
-		league.getSortedTeams();
+		
 		league.getTournamentScore();
 		
 	}

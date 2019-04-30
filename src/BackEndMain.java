@@ -6,7 +6,14 @@ import java.util.ArrayList;
  */
 public class BackEndMain {
 	
+	
+	
 	public static void main(String[] args)
+	
+	/*
+	 * To-do 
+	 * - condense main
+	 */
 	
 	{
 		FileInitializer fz = new FileInitializer();
@@ -16,33 +23,24 @@ public class BackEndMain {
 		ArrayList<Team> CAF = fz.getRegionTeams("CAF");
 		ArrayList<Team> OFC = fz.getRegionTeams("OFC");
 		ArrayList<Team> CONMEBOL = fz.getRegionTeams("CONMEBOL");
+		ArrayList<League> allLeagues = new ArrayList<League>();
 		
 		League concacafLeague = new League (CONCACAF);
-		concacafLeague.simulateQualifiers();
-		concacafLeague.getSortedTeams();
-		concacafLeague.getTournamentScore();
-		System.out.println(fz.toString());
-		/*
-		 * Feel free to test these leagues out too, commented them out to only show one league test
-		 * but hey if it works for one it should work for all....right?
-		 */
-		
-		
-		/*League afcLeague = new League(AFC);
-		afcLeague.simulateQualifiers();
-		
+		League afcLeague = new League(AFC);
 		League uefaLeague = new League(UEFA);
-		uefaLeague.simulateQualifiers();
-		
 		League cafLeague = new League(CAF);
-		cafLeague.simulateQualifiers();
-		
 		League ofcLeague = new League(OFC);
-		ofcLeague.simulateQualifiers();
-		
 		League conmebolLeague = new League(CONMEBOL);
-		conmebolLeague.simulateQualifiers(); */
+		allLeagues.add(concacafLeague);
+		allLeagues.add(afcLeague);
+		allLeagues.add(uefaLeague);
+		allLeagues.add(cafLeague);
+		allLeagues.add(ofcLeague);
+		allLeagues.add(conmebolLeague);
 		
+		Regions regions = new Regions(allLeagues);
+		regions.simulateQualifiers();
+		regions.getTournamentScore();
 		
 		
 	}

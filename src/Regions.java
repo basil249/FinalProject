@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Regions {
+public class Regions implements Playable {
 
     private ArrayList<League> Americas;
     private ArrayList<League> Africa;
@@ -10,6 +10,9 @@ public class Regions {
     private ArrayList<League> Oceania;
     private ArrayList<League> SouthAmerica;
     private ArrayList<League> Finalist;
+    
+    
+    private ArrayList<League>allLeagues;	//added by zion
 
     public Regions(ArrayList<League> americas, ArrayList<League> africa, ArrayList<League> asia, ArrayList<League> europe, ArrayList<League> oceania, ArrayList<League> southAmerica) {
         Americas = americas;
@@ -19,12 +22,31 @@ public class Regions {
         Oceania = oceania;
         SouthAmerica = southAmerica;
     }
+    
+    public Regions(ArrayList<League> leagues) { //added by zion
+    	allLeagues = leagues;
 
-    public void simulateSeason(){
-        // season sim to be done in League class for pre sorting and scoring decided by league matches
     }
 
-    public ArrayList<ArrayList<Team>> setupWorldCup(){
+    @Override							//added by zion
+	public void simulateQualifiers() {
+		for(League l: allLeagues) {
+			l.simulateQualifiers();
+		}
+		
+	}
+
+	
+
+	@Override							//added by zion
+	public void getTournamentScore() {
+		for(League l: allLeagues) {
+			l.getTournamentScore();
+		}
+		
+	}
+
+	public ArrayList<ArrayList<Team>> setupWorldCup(){
 
         ArrayList<Team> AmericanTeams = new ArrayList<>();
         for(League l: Americas){
