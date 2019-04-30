@@ -2,7 +2,7 @@
 public class Match {
 
 	private Team home,away,winner,loser;
-	private boolean isTie;
+	private boolean isTie,isOverTime;
 	private int numKicks;
 	
 	public Match()
@@ -11,6 +11,7 @@ public class Match {
 		away=new Team();
 		this.numKicks=20;
 		isTie=false;
+		isOverTime=false;
 	}
 	public Match(Team home, Team away)
 	{
@@ -18,6 +19,7 @@ public class Match {
 		this.away=away;
 		this.numKicks=20;
 		isTie=false;
+		isOverTime=false;
 	}
 	//returns the winning team. Or null if it is a tie
 	public void playMatch()
@@ -82,7 +84,12 @@ public class Match {
 		if(isTie())
 		{
 			playMatch();
+			isOverTime=true;
 		}
+	}
+	public boolean playedOverTime()
+	{
+		return isOverTime;
 	}
 
 }

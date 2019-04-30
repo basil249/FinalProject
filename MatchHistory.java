@@ -51,5 +51,15 @@ public class MatchHistory {
 	{
 		return history;
 	}
+	public int getNumOverTimes()
+	{
+		int counter=0;
+		for(int i=0;i<history.size();i++)
+		{
+			if(history.get(i).playedOverTime())
+				counter++;
+		}
+		return counter;
+	}
 
 }
