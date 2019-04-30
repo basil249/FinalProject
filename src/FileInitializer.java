@@ -180,57 +180,15 @@ public class FileInitializer {
 		String result="";
 		for(int i= 0;i<this.teamList.size();i++)
 		{
-			String temp="Team: "+teamList.get(i).getName()+" Rank: "+teamList.get(i).getRank()+ " Region: " + teamList.get(i).getRegion() + ". \n";
+			String temp="Team: "+teamList.get(i).getName()+" Rank: "+teamList.get(i).getRank()+". \n";
 			result+=temp;
 		}
 		return result;
 	}
-	
-	
-	public ArrayList<Team> getRegionTeams(String regionName) {	//added by zion
-		String region = " #" + regionName + "# ";
-		ArrayList<Team> temp = new ArrayList<Team>();
-		for(Team t: teamList) {
-			if(t.getRegion().equals(region)) {
-				temp.add(t);
-			}
-				
-		}
-		return temp;
-	}
-	
-	
-	
 	public static void main(String[] args)
 	{
 		FileInitializer fz = new FileInitializer();
-		ArrayList<Team> CONCACAF = fz.getRegionTeams("CONCACAF");
-		for(Team t: CONCACAF) {
-			System.out.println(t.toString());
-		}
-		ArrayList<Team> AFC = fz.getRegionTeams("AFC");
-		for(Team t: AFC) {
-			System.out.println(t.toString());
-		}
-		ArrayList<Team> UEFA = fz.getRegionTeams("UEFA");
-		for(Team t: UEFA) {
-			System.out.println(t.toString());
-		}
-		ArrayList<Team> CAF = fz.getRegionTeams("CAF");
-		for(Team t: CAF) {
-			System.out.println(t.toString());
-		}
-		ArrayList<Team> OFC = fz.getRegionTeams("OFC");
-		for(Team t: OFC) {
-			System.out.println(t.toString());
-		}
-		ArrayList<Team> CONMEBOL = fz.getRegionTeams("CONMEBOL");
-		for(Team t: CONMEBOL) {
-			System.out.println(t.toString());
-		}
-		
-		
-		//System.out.println(fz.toString());
+		System.out.println(fz.toString());
 	}
 
 }
