@@ -37,22 +37,22 @@ public class Regions {
         }
 
         ArrayList<Team> AsianTeams = new ArrayList<>();
-        for(League l: Americas){
+        for(League l: Asia){
             AmericanTeams.addAll(l.getSortedTeams());
         }
 
         ArrayList<Team> EuropianTeams = new ArrayList<>();
-        for(League l: Americas){
+        for(League l: Europe){
             AmericanTeams.addAll(l.getSortedTeams());
         }
 
         ArrayList<Team> OceanicTeams = new ArrayList<>();
-        for(League l: Americas){
+        for(League l: Oceania){
             AmericanTeams.addAll(l.getSortedTeams());
         }
 
         ArrayList<Team> SouthAmericanTeams = new ArrayList<>();
-        for(League l: Americas){
+        for(League l: SouthAmerica){
             AmericanTeams.addAll(l.getSortedTeams());
         }
 
