@@ -15,7 +15,7 @@ public class Team {
     private boolean seed;
     private int rank, preRank;
     private String region,name;
-    private int points, score;
+    private int points, score, matchScore; //attribute matchSCore added by z
     
     public Team()
     {
@@ -26,6 +26,7 @@ public class Team {
         name="Default";
         points=0;
         score=0;
+        matchScore = 0; //added by z
     }
     public Team(String Name, int rank)
     {
@@ -55,6 +56,12 @@ public class Team {
     public void setScore(int i)
     {
     	score+=i;
+    }
+    public void setMatchScore(int i) { 	//method added by z...sets score for a specific match
+    	matchScore = i;
+    }
+    public int getMatchScore() {	//method added by z ...gets score from a specific match
+    	return matchScore;
     }
     public int getScore()
     {
@@ -100,6 +107,12 @@ public class Team {
     {
         this.region=s;
     }
+    public String toString()
+	{
+		String info;
+		info = "Team: " + getName() + " Rank: " + getRank() + " Region: " + getRegion();
+		return info;
+	}
     
     /*
      * This method computes the probability that this team will score based on their rank. And outputs a 1 if the team did score or a 0 if it did not.

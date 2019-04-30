@@ -56,34 +56,46 @@ public class League {
 	 */
 	public void simulateMatch(Team team1, Team team2) {
 		
-		int pointsForTeam1;
-		int pointsForTeam2;
+		int pointsForTeam1 = 0;
+		int pointsForTeam2 = 0;
 		
-		//NEED TO UPDATE THISSSSSSSS!!!!!!!!!
-		pointsForTeam1 = (int) (((Math.random() * 4) + 1) * (1 - (team1.getRank() * 0.02)));		//create points for team1
-        pointsForTeam2 = (int) (((Math.random() * 4) + 1) * (1 - (team2.getRank() * 0.02)));		//create points for team2
+		int duration = 5;
+		int start = 0;
+		
+		while(start < duration) {
+			if(team1.score() == 1) {
+				pointsForTeam1++;
+			}
+			if(team2.score() == 1) {
+				pointsForTeam2++;
+			}
+				start++;
+		}
         
-		team1.setPoints(pointsForTeam1);	
-		team2.setPoints(pointsForTeam2);
+		team1.setMatchScore(pointsForTeam1);	
+		team1.setScore(pointsForTeam1);
 		
-		System.out.println(team1.getName() + " points: " + team1.getPoints());
-		System.out.println(team2.getName() + " points: " + team2.getPoints());
+		team2.setMatchScore(pointsForTeam2);
+		team2.setScore(pointsForTeam2);
+		
+		System.out.println(team1.getName() + " scored: " + team1.getMatchScore());
+		System.out.println(team2.getName() + " scored: " + team2.getMatchScore());
 		
 		//This conditional statements are used to determine who scored what, and who won.
 		if(pointsForTeam1 > pointsForTeam2) {
-			team1.setScore(3);
+			team1.setPoints(3);
 			int difference = pointsForTeam1 - pointsForTeam2;
 			System.out.println(team1.getName() + " beat " + team2.getName() + " by " + difference + "\n");
 		}
 		else if(pointsForTeam2 > pointsForTeam1) {
-			team2.setScore(3);
+			team2.setPoints(3);
 			int difference = pointsForTeam2 - pointsForTeam1;
 			System.out.println(team2.getName() + " beat " + team1.getName() + " by " + difference + "\n");
 		}
 		
 		else{				
-			team1.setScore(1);
-			team2.setScore(1);
+			team1.setPoints(1);
+			team2.setPoints(1);
 			System.out.println("There was a tie between: " + team1.getName() + " & " + team2.getName() + "\n");
 		}
 	}
@@ -96,7 +108,7 @@ public class League {
 	
 	public void getTournamentScore() {
 		for(Team t: teams) {
-			System.out.println(t.getName() + " tournamnet score: " + t.getScore() + " tournament points: " + t.getPoints());
+			System.out.println(t.getName() + " tournamnet points: " + t.getPoints() + " total goals scored: " + t.getScore());
 		}
 	}
 	
@@ -106,7 +118,7 @@ public class League {
 	 */
 	
 	public ArrayList<Team> getSortedTeams() {
-		Comparator<Team> newRankComparator = Comparator.comparingInt(Team::getScore);	
+		Comparator<Team> newRankComparator = Comparator.comparingInt(Team::getPoints);	
 		Collections.sort(teams, newRankComparator);
 		Collections.reverse(teams);
 		tieBreaker(teams);
@@ -119,9 +131,9 @@ public class League {
 	 * If there is a tie, whichever team had the highest amount of goals scored in the tournament gets the edge.
 	 * 
 	 * I'm not sure if this is the format but during group stage in the world cup tie breakers are broken down as follows:
-	 * - Highest amount of points
-	 * - Goal difference (The team who scored the most points between their match up gets the edge)
-	 * - Goals scored (Team with the highest amount of goals scored gets the edge)
+	 * 1) Highest amount of points
+	 * 2) Goal difference (The team who scored the most points between their match up gets the edge)
+	 * 3) Goals scored (Team with the highest amount of goals scored gets the edge)
 	 * 
 	 * TO-DO
 	 * -What happens when the teams had the same amount of points? What should we do...........hmm...
@@ -131,9 +143,9 @@ public class League {
 	public void tieBreaker(ArrayList<Team> teams) {
 		
 		for(int i = 0; i < teams.size() - 1; i++) {
-			if(teams.get(i).getScore() == teams.get(i + 1).getScore()) {
+			if(teams.get(i).getPoints() == teams.get(i + 1).getPoints()) {
 				
-				if(teams.get(i + 1).getPoints() > teams.get(i).getPoints()) {
+				if(teams.get(i + 1).getScore() > teams.get(i).getScore()) {
 					Collections.swap(teams, i, i + 1);
 				}
 			}
