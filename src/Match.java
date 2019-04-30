@@ -37,6 +37,14 @@ public class Match {
 	{
 		this.away=t;
 	}
+	public void setNumKicks(int i)
+	{
+		this.numKicks=i;
+	}
+	public int getNumKicks()
+	{
+		return this.numKicks;
+	}
 	//returns the winning team. Or null if it is a tie
 	public void playMatch()
 	{
