@@ -5,6 +5,7 @@
  */
 
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Random;
  */
 public class Team {
     private boolean seed;
-    private int rank, preRank, seedRank;
+    private int rank, preRank, seedRank, groupPoints;
     private String region,name;
     private int points, score, matchScore; //attribute matchSCore added by z
 
@@ -27,6 +28,7 @@ public class Team {
         points=0;
         score=0;
         matchScore = 0; //added by z
+        groupPoints = 0;
     }
     public Team(String Name, int rank)
     {
@@ -37,6 +39,7 @@ public class Team {
         seed=true;
         points=0;
         score=0;
+        groupPoints = 0;
     }
     public Team(String Name, int rank, int score, int points)
     {
@@ -44,6 +47,7 @@ public class Team {
         this.rank=rank;
         this.score=score;
         this.points=points;
+        groupPoints = 0;
     }
     public void setPoints(int i)
     {
@@ -77,6 +81,14 @@ public class Team {
     }
     public int getSeedRank() {
         return seedRank;
+    }
+
+    public int getGroupPoints() {
+        return groupPoints;
+    }
+
+    public void setGroupPoints(int groupPoints) {
+        this.groupPoints = groupPoints;
     }
 
     public void setSeedRank(int seedRank) {
@@ -227,4 +239,25 @@ public class Team {
         System.out.println("Num scores: "+numScore+", Rank: "+a1.getRank()+", Num Iterations: "+numIterations);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return seed == team.seed &&
+                rank == team.rank &&
+                preRank == team.preRank &&
+                seedRank == team.seedRank &&
+                points == team.points &&
+                score == team.score &&
+                matchScore == team.matchScore &&
+                Objects.equals(region, team.region) &&
+                Objects.equals(name, team.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(seed, rank, preRank, seedRank, region, name, points, score, matchScore);
+    }
 }
+
