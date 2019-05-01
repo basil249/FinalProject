@@ -67,6 +67,10 @@ public class League implements Playable {
 		}
 	}
 	
+	public MatchHistory getMatchHistory() {
+		return matchHistory;
+	}
+	
 	
 	/*
 	 * getTournamentScore prints the tournament score for each team
@@ -115,6 +119,7 @@ public class League implements Playable {
 		for(int i = 0; i < teams.size(); i++) {
 			for(int k = teams.size() - 1; k > i; k--) {
 				if(teams.get(i).getPoints() == teams.get(k).getPoints()) {
+				
 					if( teams.get(i).getScore() < teams.get(k).getScore()) {
 						Collections.swap(teams, i, k);
 					}
@@ -123,6 +128,18 @@ public class League implements Playable {
 		}
 	}
 	
+	/*
+	 * Incomplete
+	 */
+	public void pointDifference(Team homeTeam, Team awayTeam) {
+		ArrayList<Match> matches = new ArrayList<Match>();
+		matches = matchHistory.getHistory();
+		for(Match m: matches) {
+			if(m.getHome().equals(homeTeam) & m.getAway().equals(awayTeam)) {
+				
+			}
+		}
+	}
 	
 	
 	/*
