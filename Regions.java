@@ -183,6 +183,7 @@ public class Regions implements Playable {
         return qualifiers;
     }
 
+    
     private ArrayList<Team> get32Seeded(ArrayList<Team> l){
 
         ArrayList<Team> tempList = new ArrayList<Team>(34);

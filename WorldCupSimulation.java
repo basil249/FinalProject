@@ -35,7 +35,8 @@ public class WorldCupSimulation extends Application {
     public void start(Stage primaryStage) {
         InfoBox iq = new InfoBox();
         //iq.instructions();
-        
+        BracketPane bp = new BracketPane();
+        bp.display();
         Button start = new Button();
         start.setText("Start Simulation");
         Button info = new Button();
