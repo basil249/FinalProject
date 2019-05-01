@@ -49,7 +49,6 @@ public class Regions implements Playable {
 		for(League l: allLeagues) {
 			l.getTournamentScore();
 		}
-		
 	}
 
 	public ArrayList<ArrayList<Team>> setupWorldCup(){
@@ -207,14 +206,36 @@ public class Regions implements Playable {
         return seeded;
     }
 
-
-
     public void simulateGroupRound(ArrayList<League> l){
 
     }
 
     public void simulateFinals(ArrayList<League> l){
 
+    }
+
+    public ArrayList<League> getAmericas() {
+        return Americas;
+    }
+
+    public ArrayList<League> getAfrica() {
+        return Africa;
+    }
+
+    public ArrayList<League> getAsia() {
+        return Asia;
+    }
+
+    public ArrayList<League> getEurope() {
+        return Europe;
+    }
+
+    public ArrayList<League> getOceania() {
+        return Oceania;
+    }
+
+    public ArrayList<League> getSouthAmerica() {
+        return SouthAmerica;
     }
 
 }

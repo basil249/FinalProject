@@ -44,8 +44,6 @@ public class League implements Playable {
 				
 				System.out.println(teams.get(k).getName() + " vs. " + teams.get(i).getName());
 				simulateMatch(teams.get(k), teams.get(i)); //second match
-				
-				
 			}
 		}
 	}
