@@ -48,7 +48,5 @@ public class BackEndMain {
 		Regions regions = new Regions(allLeagues);
 		regions.simulateQualifiers();
 		regions.getTournamentScore();
-		
-		
 	}
 }
