@@ -1,3 +1,5 @@
+package worldcup;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -34,60 +36,173 @@ public class WorldCupSimulation extends Application {
     Scene scene3;
 
     ArrayList<Team> concacaf;
+    ArrayList<Team> afc;
+    ArrayList<Team> uefa;
+    ArrayList<Team> caf;
+    ArrayList<Team> ofc;
+    ArrayList<Team> conmebol;
 
     @Override
     public void start(Stage primaryStage) {
         FileInitializer fz = new FileInitializer();
         concacaf = fz.getRegionTeams("CONCACAF");
-//        ArrayList<Team> afc = fz.getRegionTeams("AFC");
-//        ArrayList<Team> uefa = fz.getRegionTeams("UEFA");
-//        ArrayList<Team> caf = fz.getRegionTeams("CAF");
-//        ArrayList<Team> ofc = fz.getRegionTeams("OFC");
-//        ArrayList<Team> conmebol = fz.getRegionTeams("CONMEBOL");
+        afc = fz.getRegionTeams("AFC");
+        uefa = fz.getRegionTeams("UEFA");
+        caf = fz.getRegionTeams("CAF");
+        ofc = fz.getRegionTeams("OFC");
+        conmebol = fz.getRegionTeams("CONMEBOL");
 
         HBox main = new HBox();
-
         TabPane tabs = new TabPane();
+
+        //CONCACAF TAB
         Tab concacafTab = new Tab("CONCACAF");
         concacafTab.setClosable(false);
+
         TableColumn<Team, String> concacafNameColumn = new TableColumn<>("Name");
         concacafNameColumn.setMinWidth(200);
         concacafNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
+        TableColumn<Team, String> concacafRankColumn = new TableColumn<>("Rank");
+        concacafRankColumn.setMinWidth(50);
+        concacafRankColumn.setCellValueFactory(new PropertyValueFactory<>("rank"));
+
+        TableColumn<Team, String> concacafPointsColumn = new TableColumn<>("Points");
+        concacafPointsColumn.setMinWidth(50);
+        concacafPointsColumn.setCellValueFactory(new PropertyValueFactory<>("points"));
+
         TableView<Team> concacafTable = new TableView<>();
         concacafTable.setItems(getTeams("concacaf"));
-        concacafTable.getColumns().addAll(concacafNameColumn);
+        concacafTable.getColumns().addAll(concacafNameColumn, concacafRankColumn, concacafPointsColumn);
 
         concacafTab.setContent(concacafTable);
 
-
-
-
-
+        //CONMEBOL TAB
         Tab conmebolTab = new Tab("CONMEBOL");
         conmebolTab.setClosable(false);
 
-        Tab eufaTab = new Tab("EUFA");
-        eufaTab.setClosable(false);
+        TableColumn<Team, String> conmebolNameColumn = new TableColumn<>("Name");
+        conmebolNameColumn.setMinWidth(200);
+        conmebolNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
+        TableView<Team> conmebolTable = new TableView<>();
+        conmebolTable.setItems(getTeams("conmebol"));
+        conmebolTable.getColumns().addAll(conmebolNameColumn);
+
+        conmebolTab.setContent(conmebolTable);
+
+        //UEFA TAB
+        Tab uefaTab = new Tab("UEFA");
+        uefaTab.setClosable(false);
+
+        TableColumn<Team, String> uefaNameColumn = new TableColumn<>("Name");
+        uefaNameColumn.setMinWidth(200);
+        uefaNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableView<Team> uefaTable = new TableView<>();
+        uefaTable.setItems(getTeams("uefa"));
+        uefaTable.getColumns().addAll(uefaNameColumn);
+
+        uefaTab.setContent(uefaTable);
+
+        //CAF TAB
         Tab cafTab = new Tab("CAF");
         cafTab.setClosable(false);
 
+        TableColumn<Team, String> cafNameColumn = new TableColumn<>("Name");
+        cafNameColumn.setMinWidth(200);
+        cafNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableView<Team> cafTable = new TableView<>();
+        cafTable.setItems(getTeams("caf"));
+        cafTable.getColumns().addAll(cafNameColumn);
+
+        cafTab.setContent(cafTable);
+
+        //AFC TAB
         Tab afcTab = new Tab("AFC");
         afcTab.setClosable(false);
 
+        TableColumn<Team, String> afcNameColumn = new TableColumn<>("Name");
+        afcNameColumn.setMinWidth(200);
+        afcNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableView<Team> afcTable = new TableView<>();
+        afcTable.setItems(getTeams("afc"));
+        afcTable.getColumns().addAll(afcNameColumn);
+
+        afcTab.setContent(afcTable);
+
+        //OFC TAB
         Tab ofcTab = new Tab("OFC");
         ofcTab.setClosable(false);
 
-        tabs.getTabs().addAll(concacafTab, conmebolTab, eufaTab, cafTab, afcTab, ofcTab);
+        TableColumn<Team, String> ofcNameColumn = new TableColumn<>("Name");
+        ofcNameColumn.setMinWidth(200);
+        ofcNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableView<Team> ofcTable = new TableView<>();
+        ofcTable.setItems(getTeams("ofc"));
+        ofcTable.getColumns().addAll(ofcNameColumn);
+
+        ofcTab.setContent(ofcTable);
+
+        //ADD ALL TABS
+        tabs.getTabs().addAll(concacafTab, conmebolTab, uefaTab, cafTab, afcTab, ofcTab);
 
 
-        InfoBox iq = new InfoBox();
-        //iq.instructions();
-        BracketPane bp = new BracketPane();
+        
+        
+
+BracketPane bp = new BracketPane();
+        
+        bp.addTeam("test1");
+        bp.addTeam("test2");
+        bp.addTeam("test3");
+        bp.addTeam("test4");
+        bp.addTeam("test5");
+        bp.addTeam("test6");
+        bp.addTeam("test7");
+        bp.addTeam("test8");
+        bp.addTeam("test9");
+        bp.addTeam("test10");
+        bp.addTeam("test11");
+        bp.addTeam("test12");
+        bp.addTeam("test13");
+        bp.addTeam("test14");
+        bp.addTeam("test15");
+        bp.addTeam("test16");
+        bp.addTeam("test17");
+        bp.addTeam("test18");
+        bp.addTeam("test19");
+        bp.addTeam("test20");
+        bp.addTeam("test21");
+        bp.addTeam("test22");
+        bp.addTeam("test23");
+        bp.addTeam("test24");
+        bp.addTeam("test25");
+        bp.addTeam("test26");
+        bp.addTeam("test27");
+        bp.addTeam("test28");
+        bp.addTeam("test29");
+        bp.addTeam("test30");
+        bp.addTeam("test31");
+        bp.addTeam("test32");
+        bp.addTeam("test33");
+        bp.addTeam("test34");
 //        bp.display();
         Button start = new Button();
         start.setText("Start Simulation");
+        start.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(new Scene(bp, 700, 1100));
+                primaryStage.setMaximized(true);
+            }
+        });
+                InfoBox iq = new InfoBox();
+        //iq.instructions();
+        
         Button info = new Button();
         info.setText("Information");
         info.setOnAction(e -> iq.instructions());
@@ -125,6 +240,7 @@ public class WorldCupSimulation extends Application {
 
         
         Scene scene = new Scene(main, 800, 600);
+
        // scene1 = new Scene(root);
         //instructions.setOnAction(e -> primaryStage.setScene(scene1));
         primaryStage.setTitle("The World Cup");
@@ -139,6 +255,26 @@ public class WorldCupSimulation extends Application {
             ObservableList<Team> teams = FXCollections.observableArrayList();
             teams.addAll(concacaf);
             return teams;
+        } else if (region.equals("conmebol")) {
+            ObservableList<Team> teams = FXCollections.observableArrayList();
+            teams.addAll(conmebol);
+            return teams;
+        } else if (region.equals("uefa")) {
+            ObservableList<Team> teams = FXCollections.observableArrayList();
+            teams.addAll(uefa);
+            return teams;
+        } else if (region.equals("caf")) {
+            ObservableList<Team> teams = FXCollections.observableArrayList();
+            teams.addAll(caf);
+            return teams;
+        } else if (region.equals("afc")) {
+            ObservableList<Team> teams = FXCollections.observableArrayList();
+            teams.addAll(afc);
+            return teams;
+        } else if (region.equals("ofc")) {
+            ObservableList<Team> teams = FXCollections.observableArrayList();
+            teams.addAll(ofc);
+            return teams;
         } else {
             return null;
         }
@@ -150,6 +286,5 @@ public class WorldCupSimulation extends Application {
     }
     
 }
-
 
 

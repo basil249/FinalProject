@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package worldcup;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,8 @@ public class League implements Playable {
 				
 				System.out.println(teams.get(k).getName() + " vs. " + teams.get(i).getName());
 				simulateMatch(teams.get(k), teams.get(i)); //second match
+				
+				
 			}
 		}
 	}
