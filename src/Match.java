@@ -68,8 +68,8 @@ public class Match {
 	{
 		int temp=home.score(numKicks);
 		int temp2=away.score(numKicks);
-		homeScore+=home.score(numKicks);
-		awayScore+=away.score(numKicks);
+		homeScore+=temp;
+		awayScore+=temp2;
 		home.setScore(temp);
 		away.setScore(temp2);
 		if(homeScore>awayScore)
