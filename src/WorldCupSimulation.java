@@ -61,9 +61,17 @@ public class WorldCupSimulation extends Application {
         concacafNameColumn.setMinWidth(200);
         concacafNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
+        TableColumn<Team, String> concacafRankColumn = new TableColumn<>("Rank");
+        concacafRankColumn.setMinWidth(50);
+        concacafRankColumn.setCellValueFactory(new PropertyValueFactory<>("rank"));
+
+        TableColumn<Team, String> concacafPointsColumn = new TableColumn<>("Points");
+        concacafPointsColumn.setMinWidth(50);
+        concacafPointsColumn.setCellValueFactory(new PropertyValueFactory<>("points"));
+
         TableView<Team> concacafTable = new TableView<>();
         concacafTable.setItems(getTeams("concacaf"));
-        concacafTable.getColumns().addAll(concacafNameColumn);
+        concacafTable.getColumns().addAll(concacafNameColumn, concacafRankColumn, concacafPointsColumn);
 
         concacafTab.setContent(concacafTable);
 
@@ -184,6 +192,7 @@ public class WorldCupSimulation extends Application {
 
         
         Scene scene = new Scene(main, 800, 600);
+
        // scene1 = new Scene(root);
         //instructions.setOnAction(e -> primaryStage.setScene(scene1));
         primaryStage.setTitle("The World Cup");
