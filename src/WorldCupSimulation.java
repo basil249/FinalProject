@@ -39,11 +39,11 @@ public class WorldCupSimulation extends Application {
     public void start(Stage primaryStage) {
         FileInitializer fz = new FileInitializer();
         concacaf = fz.getRegionTeams("CONCACAF");
-        ArrayList<Team> afc = fz.getRegionTeams("AFC");
-        ArrayList<Team> uefa = fz.getRegionTeams("UEFA");
-        ArrayList<Team> caf = fz.getRegionTeams("CAF");
-        ArrayList<Team> ofc = fz.getRegionTeams("OFC");
-        ArrayList<Team> conmebol = fz.getRegionTeams("CONMEBOL");
+//        ArrayList<Team> afc = fz.getRegionTeams("AFC");
+//        ArrayList<Team> uefa = fz.getRegionTeams("UEFA");
+//        ArrayList<Team> caf = fz.getRegionTeams("CAF");
+//        ArrayList<Team> ofc = fz.getRegionTeams("OFC");
+//        ArrayList<Team> conmebol = fz.getRegionTeams("CONMEBOL");
 
         HBox main = new HBox();
 
@@ -137,7 +137,7 @@ public class WorldCupSimulation extends Application {
     public ObservableList<Team> getTeams(String region) {
         if (region.equals("concacaf")) {
             ObservableList<Team> teams = FXCollections.observableArrayList();
-            concacaf.forEach(concacaf -> teams.add(concacaf));
+            teams.addAll(concacaf);
             return teams;
         } else {
             return null;
