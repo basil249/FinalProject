@@ -21,7 +21,7 @@ public class FileInitializer {
 	public FileInitializer()
 	{
 		teamDataPath="TeamInfo.txt";
-		instructionPath= "Instructions.txt";
+		instructionPath="Instructions.txt";
 		File teamData=new File(teamDataPath);
 		File instructionData=new File(instructionPath);
 		teamList=new ArrayList<Team>();

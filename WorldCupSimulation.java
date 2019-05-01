@@ -36,9 +36,10 @@ public class WorldCupSimulation extends Application {
         InfoBox iq = new InfoBox();
         //iq.instructions();
         BracketPane bp = new BracketPane();
-        bp.display();
+        
         Button start = new Button();
         start.setText("Start Simulation");
+        start.setOnAction(e -> simulateScene(bp, primaryStage));
         Button info = new Button();
         info.setText("Information");
         info.setOnAction(e -> iq.instructions());
@@ -80,6 +81,10 @@ public class WorldCupSimulation extends Application {
     }
 
 
+    private void simulateScene(BracketPane b, Stage s){
+        s.setScene(b.display());
+        s.setMaximized(true);
+    }
     public static void main(String[] args) {
         launch(args);
     }

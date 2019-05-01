@@ -47,7 +47,7 @@ public class BracketPane{
     private Regions r;
     private FileInitializer fz;
     public BracketPane(){
-        
+        teams = new ArrayList<String>();
 		
         brackets = new TilePane[10][8];
         for(int i = 0; i < 10; i++){
@@ -61,7 +61,7 @@ public class BracketPane{
                 // second round - winners from each game
                 else if (i == 1 || i == 8){
                     if(j % 2 == 0){
-                        Label l = new Label("Sample");
+                        Label l = new Label("Second Round");
                     
                     brackets[i][j] = new TilePane(l);
                     }
@@ -73,7 +73,7 @@ public class BracketPane{
                 
                 else if (i == 3 || i == 6){
                     if(j % 5 == 0){
-                        Label l = new Label("Sample");
+                        Label l = new Label("Third Round");
                     
                     brackets[i][j] = new TilePane(l);
                     }
@@ -84,7 +84,7 @@ public class BracketPane{
                 }
                 else if (i == 4 || i == 5){
                     if(j % 10 == 0){
-                        Label l = new Label("Sample");
+                        Label l = new Label("Final Round");
                     
                     brackets[i][j] = new TilePane(l);
                     }
@@ -105,29 +105,26 @@ public class BracketPane{
     
 
     
-        public void display(){
+        public Scene display(){
         Stage window = new Stage();
         
         window.setTitle("Brackets");
         window.setMinWidth(250);
-        //window.setFullScreen(true);
-        Button closeButton = new Button("Close the window");
-        closeButton.setOnAction(e -> window.close());
+        window.setFullScreen(true);
         
         
         GridPane layout = new GridPane();
-        layout.setMinWidth(500);
+        layout.setPrefSize(800.0, 600.0);
         
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 8; j++)
                 layout.add(brackets[i][j], i + 1, j + 1);
         }
-        layout.add(closeButton, 5, 10);
         
         
         Scene scene = new Scene(layout);
-        window.setScene(scene);
-        window.showAndWait();
+        
+        return scene;
     
     }
 
