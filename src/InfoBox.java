@@ -18,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.text.Text; 
+import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment; 
 import javafx.scene.text.TextFlow; 
 import javax.swing.JTextArea;
@@ -44,11 +45,13 @@ public class InfoBox {
         
         Text text1 = new Text(message);
         TextFlow layout = new TextFlow();
+        text1.setFont(new Font(10));
+        
         layout.setPrefSize(300, 300); 
         layout.setMinWidth(50);
 
         layout.getChildren().addAll(text1);
-        layout.setTextAlignment(TextAlignment.CENTER);
+        layout.setTextAlignment(TextAlignment.LEFT);
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.showAndWait();
