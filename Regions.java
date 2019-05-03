@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package worldcup;
-
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Regions implements Playable {
-
+public class Regions {
+    //private variables used throughout the class
     private ArrayList<League> Americas;
     private ArrayList<League> Africa;
     private ArrayList<League> Asia;
     private ArrayList<League> Europe;
     private ArrayList<League> Oceania;
     private ArrayList<League> SouthAmerica;
-    private ArrayList<League> Finalist;
-    
-    
-    private ArrayList<League>allLeagues;	//added by zion
-
+    private ArrayList<Team> Finalist;
+    //Constructor used to intialize Arraylists of America,Afirca,Asia,Europe,Oceania,SouthAmerica.
     public Regions(ArrayList<League> americas, ArrayList<League> africa, ArrayList<League> asia, ArrayList<League> europe, ArrayList<League> oceania, ArrayList<League> southAmerica) {
         Americas = americas;
         Africa = africa;
@@ -29,31 +20,12 @@ public class Regions implements Playable {
         Oceania = oceania;
         SouthAmerica = southAmerica;
     }
-    
-    public Regions(ArrayList<League> leagues) { //added by zion
-    	allLeagues = leagues;
 
+    public void simulateSeason(){
+        // season sim to be done in League class for pre sorting and scoring decided by league matches
     }
 
-    @Override							//added by zion
-	public void simulateQualifiers() {
-		for(League l: allLeagues) {
-			l.simulateQualifiers();
-		}
-		
-	}
-
-	
-
-	@Override							//added by zion
-	public void getTournamentScore() {
-		for(League l: allLeagues) {
-			l.getTournamentScore();
-		}
-		
-	}
-
-	public ArrayList<ArrayList<Team>> setupWorldCup(){
+    public ArrayList<ArrayList<Team>> setupWorldCup(){
 
         ArrayList<Team> AmericanTeams = new ArrayList<>();
         for(League l: Americas){
@@ -183,7 +155,6 @@ public class Regions implements Playable {
         return qualifiers;
     }
 
-    
     private ArrayList<Team> get32Seeded(ArrayList<Team> l){
 
         ArrayList<Team> tempList = new ArrayList<Team>(34);
@@ -209,8 +180,21 @@ public class Regions implements Playable {
     }
 
 
+    // simulate group round takes the list of groups, makes a league for each group an runs the specific group sim so each team play once.
+    // the top two players get added to the Finalist list of teams (final 16)
+    public void simulateGroupRound(ArrayList<ArrayList<Team>> g){
 
-    public void simulateGroupRound(ArrayList<League> l){
+//        for(int f = 0; f < g.size(); f++) {
+//
+//            League groupRound = new League(g.get(f));
+//
+//            groupRound.simulateGroupMatch();
+//
+//            ArrayList<Team> sortedGroup = groupRound.getSortedGroupTeams();
+//
+//            Finalist.add(sortedGroup.get(4));
+//            Finalist.add(sortedGroup.get(3));
+//        }
 
     }
 

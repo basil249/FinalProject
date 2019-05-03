@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package worldcup;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,23 +6,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 //Author Chris Williamson
+//This class is used to create read the infromation from teamInfo.txt and Instructions.txt and store them in repected variables.
 public class FileInitializer {
+    //private variables used throughout the class
 	private String instructionPath,teamDataPath;
 	private BufferedReader teamReader,insReader;
 	private ArrayList<Team> teamList;
 	private String instructions;
+        //default constructor that reads teamInfo and insturctions. Creates new blank Arraylist of teams an a String of instructions 
 	public FileInitializer()
 	{
 		teamDataPath="TeamInfo.txt";
-		instructionPath= "Instructions.txt";
-		File teamData=new File(teamDataPath);
-		File instructionData=new File(instructionPath);
+		instructionPath="Instructions.txt";
+		File teamData=new File(teamDataPath); //Creates a file object that stores the information from teamInfo.txt
+		File instructionData=new File(instructionPath); //Creates a file object that stores the infrom from instuctions.txt
 		teamList=new ArrayList<Team>();
 		instructions=new String("");
 		try {
 			teamReader=new BufferedReader(new FileReader(teamData));
-			insReader=new BufferedReader(new FileReader(instructionData));
-			readInstructions();
+			//insReader=new BufferedReader(new FileReader(instructionData));
+			//readInstructions();
 			readTeamData();
 			scaleTeamRank();
 		} catch (FileNotFoundException e) {
@@ -67,6 +63,7 @@ public class FileInitializer {
 		}
 		this.teamList=newList;
 	}
+        
 	public void setInstructionsPath(String s)
 	{
 		instructionPath=s;
@@ -152,6 +149,8 @@ public class FileInitializer {
 			}
 		}
 	}
+        
+        // Reads information from Instructions.txt and stores it into instructions.
 	public void readInstructions()
 	{
 		if(insReader!=null)
@@ -173,16 +172,18 @@ public class FileInitializer {
 			}
 			
 		}
-               
 	}
+        //returns Arraylist of teams
 	public ArrayList<Team> getTeams()
 	{
 		return this.teamList;
 	}
+        //returns the String of intstructions
 	public String getInstructions()
 	{
 		return this.instructions;
 	}
+        @Override
 	public String toString()
 	{
 		String result="";
@@ -194,7 +195,7 @@ public class FileInitializer {
 		return result;
 	}
 	
-	
+	//returns Arraylist of teams from a specifified region
 	public ArrayList<Team> getRegionTeams(String regionName) {	//added by zion
 		String region = " #" + regionName + "# ";
 		ArrayList<Team> temp = new ArrayList<Team>();

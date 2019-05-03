@@ -3,19 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package worldcup;
+
+
+import java.util.Objects;
 import java.util.Random;
 
 /**
- *
- * @author chris_williamson
+ *  @author chris_williamson
+ *  This class is used to create an object of Team with rank,prRank,seedRank,groupPoints, region, name,points,score,match score.
  */
 public class Team {
+    //Private variables used throughout Team class
     private boolean seed;
-    private int rank, preRank, seedRank;
+    private int rank, preRank, seedRank, groupPoints;
     private String region,name;
     private int points, score, matchScore; //attribute matchSCore added by z
-
+    //Default constructor
     public Team()
     {
         seed=true;
@@ -26,7 +29,9 @@ public class Team {
         points=0;
         score=0;
         matchScore = 0; //added by z
+        groupPoints = 0;
     }
+    //Constructor that initializes the name and rank of a team
     public Team(String Name, int rank)
     {
         this.name=Name;
@@ -36,14 +41,19 @@ public class Team {
         seed=true;
         points=0;
         score=0;
+        groupPoints = 0;
     }
+    //Constructor that initializes the name,rank,score and points of a team.
     public Team(String Name, int rank, int score, int points)
     {
         this.name=Name;
         this.rank=rank;
         this.score=score;
         this.points=points;
+        groupPoints = 0;
     }
+    
+    //Getters and setters
     public void setPoints(int i)
     {
         this.points+=i;
@@ -76,6 +86,14 @@ public class Team {
     }
     public int getSeedRank() {
         return seedRank;
+    }
+
+    public int getGroupPoints() {
+        return groupPoints;
+    }
+
+    public void setGroupPoints(int groupPoints) {
+        this.groupPoints = groupPoints;
     }
 
     public void setSeedRank(int seedRank) {
@@ -114,6 +132,8 @@ public class Team {
     {
         this.region=s;
     }
+    
+    @Override 
     public String toString()
     {
         String info;
@@ -226,4 +246,25 @@ public class Team {
         System.out.println("Num scores: "+numScore+", Rank: "+a1.getRank()+", Num Iterations: "+numIterations);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return seed == team.seed &&
+                rank == team.rank &&
+                preRank == team.preRank &&
+                seedRank == team.seedRank &&
+                points == team.points &&
+                score == team.score &&
+                matchScore == team.matchScore &&
+                Objects.equals(region, team.region) &&
+                Objects.equals(name, team.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(seed, rank, preRank, seedRank, region, name, points, score, matchScore);
+    }
 }
+

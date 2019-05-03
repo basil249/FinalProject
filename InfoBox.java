@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package worldcup;
 
 import java.io.BufferedReader;
 import javafx.scene.layout.*;
@@ -22,12 +21,12 @@ import javafx.scene.text.TextFlow;
 import javax.swing.JTextArea;
 
 /**
- *
- * @author Me
+ * @
+ * This class is used to create a new scene with a with a window that displays the information given from String message and to set its title.
  */
 public class InfoBox {
 
-
+    //static method that can be used to display any String message in a window with a title.
     public static void display(String title, String message){
         Stage window = new Stage();
         
@@ -71,6 +70,7 @@ public class InfoBox {
       String infoStr = Arrays.deepToString(info);
       display("Match Information",infoStr);
     }
+    // Method used to display the information from Instructions.txt
     public void instructions(){
         FileInitializer fz = new FileInitializer();
         fz.readInstructions();
