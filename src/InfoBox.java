@@ -17,8 +17,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
+import javafx.scene.text.Text; 
+import javafx.scene.text.TextAlignment; 
+import javafx.scene.text.TextFlow; 
 import javax.swing.JTextArea;
 import javafx.scene.shape.Rectangle;
 import java.awt.Color;
@@ -41,22 +42,13 @@ public class InfoBox {
         window.setTitle(title);
         window.setMinWidth(250);
         
-        Label label = new Label();
-        label.setText(message);
-        ScrollPane text = new ScrollPane(label);
-        text.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        text.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        text.setPrefSize(300, 300);
-        text.setContent(label);
-        Button closeButton = new Button("Close the window");
-        closeButton.setOnAction(e -> window.close());
-        
-        
-        VBox layout = new VBox(10);
-        layout.setMinWidth(10);
-        layout.getChildren().addAll(text, closeButton);
-        layout.setAlignment(Pos.CENTER);
-        
+        Text text1 = new Text(message);
+        TextFlow layout = new TextFlow();
+        layout.setPrefSize(300, 300); 
+        layout.setMinWidth(50);
+
+        layout.getChildren().addAll(text1);
+        layout.setTextAlignment(TextAlignment.CENTER);
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.showAndWait();
