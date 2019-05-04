@@ -45,7 +45,7 @@ public class InfoBox {
         
         Text text1 = new Text(message);
         TextFlow layout = new TextFlow();
-        text1.setFont(new Font(10));
+        text1.setFont(new Font(18));
         
         layout.setPrefSize(300, 300); 
         layout.setMinWidth(50);
